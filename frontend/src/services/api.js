@@ -70,3 +70,30 @@ export const runBacktest = async (body) => {
     throw new Error(error.response?.data?.detail || 'Backtest failed');
   }
 };
+
+export const validateUnifiedStrategy = async (body) => {
+  try {
+    const response = await api.post('/api/backtest/unified-strategy', body);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.detail || 'Unified strategy validation failed');
+  }
+};
+
+export const validateCombinedSignals = async (body) => {
+  try {
+    const response = await api.post('/api/backtest/combined-signals', body);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.detail || 'Combined signal validation failed');
+  }
+};
+
+export const getStrategyTemplates = async () => {
+  try {
+    const response = await api.get('/api/backtest/strategy-templates');
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.detail || 'Failed to fetch strategy templates');
+  }
+};
